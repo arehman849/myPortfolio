@@ -1,9 +1,11 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import React, { Component } from "react";
+import NavLink from "./navLink";
 import "../css/header.css";
 
+
 class Header extends Component {
-  render() {
+  render() { 
     return (
       <Container>
         <Navbar
@@ -16,11 +18,7 @@ class Header extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#work">Work</Nav.Link>
-              <Nav.Link href="#about">About</Nav.Link>
-              <Nav.Link href="#blog">Blog</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
+             {this.comps.map((ele) => <NavLink href={ele} desc={ele}/>)}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -28,5 +26,7 @@ class Header extends Component {
     );
   }
 }
+
+Header.prototype.comps = ["Home", "Work", "About", "Blog", "Contact"];
 
 export default Header;
